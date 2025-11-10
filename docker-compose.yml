@@ -35,6 +35,6 @@ services:
       - LABEL_STUDIO_HOST=${LABEL_STUDIO_HOST:-}
       - JSON_LOG=1
     volumes:
-      - ./mydata:/label-studio/data:rw
-      - .:/label-studio
+      - ./mydata:/Microknots-Label-Studio/data:rw
+      - .:/Microknots-Label-Studio
     command: label-studio-uwsgi
