@@ -14,24 +14,24 @@ const PROJECTS_TO_SHOW = 10;
 
 const resources = [
   {
-    title: "Documentation",
-    url: "https://labelstud.io/guide/",
+    title: "Microknots",
+    url: "https://www.microknots.com/",
   },
   {
-    title: "API Documentation",
-    url: "https://api.labelstud.io/api-reference/introduction/getting-started",
+    title: "Headquarters",
+    url: "https://www.google.com/search?q=microknots&sca_esv=3f626f5782a50780&ei=xhQSaayhE-G-p84P5KWX6Qg&ved=0ahUKEwisnPyrguiQAxVh38kDHeTSJY0Q4dUDCBE&uact=5&oq=microknots&gs_lp=Egxnd3Mtd2l6LXNlcnAiCm1pY3Jva25vdHMyDhAuGIAEGMcBGI4FGK8BMgIQJjIIEAAYgAQYogQyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyHRAuGIAEGMcBGI4FGK8BGJcFGNwEGN4EGOAE2AEBSPoHUNkEWOMGcAF4AJABAJgBaqABowKqAQMxLjK4AQPIAQD4AQGYAgSgAsYCwgIIEAAYsAMY7wXCAgsQABiABBiwAxiiBMICCRAAGIAEGAoYC8ICCxAuGIAEGMcBGK8BwgIGEAAYChgemAMAiAYBkAYFugYGCAEQARgUkgcDMi4yoAfBGbIHAzEuMrgHwgLCBwcwLjEuMi4xyAcZ&sclient=gws-wiz-serp",
   },
   {
     title: "Release Notes",
-    url: "https://labelstud.io/learn/categories/release-notes/",
+    url: "",
   },
   {
-    title: "LabelStud.io Blog",
-    url: "https://labelstud.io/blog/",
+    title: "Microknots Blog",
+    url: "",
   },
   {
-    title: "Slack Community",
-    url: "https://slack.labelstud.io",
+    title: "Client Relations",
+    url: "",
   },
 ];
 
@@ -84,7 +84,7 @@ export const HomePage: Page = () => {
         <section className="flex flex-col gap-6">
           <div className="flex flex-col gap-1">
             <Typography variant="headline" size="small">
-               Welcome to Aurelo Data Engine 👋
+               Aurelo Data Engine 👋
             </Typography>
             <Typography size="small" className="text-neutral-content-subtler">
               Developed by Microknots Corporation
@@ -135,7 +135,7 @@ export const HomePage: Page = () => {
                   <IconFolderOpen />
                 </div>
                 <Typography variant="headline" size="small">
-                  Create your first project
+                  Create your first project with Aurelo
                 </Typography>
                 <Typography size="small" className="text-neutral-content-subtler">
                   Import your data and set up the labeling interface to start annotating
