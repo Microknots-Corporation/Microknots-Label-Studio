@@ -14,7 +14,7 @@ const PROJECTS_TO_SHOW = 10;
 
 const resources = [
   {
-    title: "Microknots",
+    title: "Microknots AI",
     url: "https://www.microknots.com/",
   },
   {
