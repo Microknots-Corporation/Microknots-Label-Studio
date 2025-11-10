@@ -30,7 +30,7 @@ const resources = [
     url: "",
   },
   {
-    title: "Client Relations",
+    title: "Resesrch and Development",
     url: "",
   },
 ];
