@@ -84,10 +84,10 @@ export const HomePage: Page = () => {
         <section className="flex flex-col gap-6">
           <div className="flex flex-col gap-1">
             <Typography variant="headline" size="small">
-              Welcome 👋
+               Welcome to Aurelo 👋
             </Typography>
             <Typography size="small" className="text-neutral-content-subtler">
-              Let's get you started.
+              Developed by Microknots Corporation
             </Typography>
           </div>
           <div className="flex justify-start gap-4">
