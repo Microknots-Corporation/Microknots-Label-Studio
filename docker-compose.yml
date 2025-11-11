@@ -1,39 +1,51 @@
+version: "3.9"
+
 services:
-  nginx:
-    build:
-      context: .
+  db:
+    image: postgres:15
     restart: unless-stopped
-    ports:
-      - "8080:8085"
-      - "8081:8086"
-    depends_on:
-      - app
     environment:
-      - LABEL_STUDIO_HOST=${LABEL_STUDIO_HOST:-}
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
     volumes:
-      - ./mydata:/label-studio/data:rw
-      - ./deploy/nginx/certs:/certs:ro
-    command: nginx
+      - pgdata:/var/lib/postgresql/data
 
   app:
-    stdin_open: true
-    tty: true
     build:
       context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
-    expose:
-      - "8000"
-    
+    depends_on:
+      - db
     environment:
-      - DJANGO_DB=default
-      - POSTGRE_NAME=postgres
-      - POSTGRE_USER=postgres
-      - POSTGRE_PASSWORD=
-      - POSTGRE_PORT=5432
-      - POSTGRE_HOST=db
-      - LABEL_STUDIO_HOST=${LABEL_STUDIO_HOST:-}
-      - JSON_LOG=1
+      DJANGO_DB: default
+      POSTGRE_NAME: postgres
+      POSTGRE_USER: postgres
+      POSTGRE_PASSWORD: postgres
+      POSTGRE_PORT: 5432
+      POSTGRE_HOST: db
+      JSON_LOG: 1
+      PORT: 8080
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    # 🔥 bind-mount your repo so edits show instantly
     volumes:
-      - ./mydata:/Microknots-Label-Studio/data:rw
-      - .:/Microknots-Label-Studio
-    command: label-studio-uwsgi
+      - ./:/label-studio
+      - ./mydata:/label-studio/data:rw
+    working_dir: /label-studio
+    # Dev server with auto-reload (more reliable than uWSGI for local work)
+    command: >
+      bash -lc "
+        python -m pip install -U pip &&
+        pip install -r requirements.txt &&
+        python manage.py migrate &&
+        python manage.py runserver 0.0.0.0:${PORT:-8080}
+      "
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
