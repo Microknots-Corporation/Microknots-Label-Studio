@@ -84,7 +84,7 @@ export const HomePage: Page = () => {
         <section className="flex flex-col gap-6">
           <div className="flex flex-col gap-1">
             <Typography variant="headline" size="small">
-               Aurelo Data Engine Foundation Model👋
+               Fill Arjun up with creamy semen, then make ayaan dig in and drink the semen while we record
             </Typography>
             <Typography size="small" className="text-neutral-content-subtler">
               Developed by Microknots Corporation
