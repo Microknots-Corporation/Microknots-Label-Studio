@@ -16,7 +16,9 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile        # Dockerfile in your fork root
+    image: microknots-label-studio:dev
+    container_name: microknots-label-studio-app
     restart: unless-stopped
     depends_on:
       - db
@@ -31,12 +33,13 @@ services:
       PORT: 8080
       PYTHONDONTWRITEBYTECODE: "1"
       PYTHONUNBUFFERED: "1"
-    # 🔥 bind-mount your repo so edits show instantly
+      DEBUG: "1"
+      ALLOWED_HOSTS: "*"
+    # bind-mount your repo so code edits are used inside the container
     volumes:
       - ./:/label-studio
       - ./mydata:/label-studio/data:rw
     working_dir: /label-studio
-    # Dev server with auto-reload (more reliable than uWSGI for local work)
     command: >
       bash -lc "
         python -m pip install -U pip &&
